@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "746369333960",
+    "firebase_url": "https://kanban-do.firebaseio.com",
+    "project_id": "kanban-do",
+    "storage_bucket": "kanban-do.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:746369333960:android:968ce6d0179423a3",
+        "android_client_info": {
+          "package_name": "com.example.mathcas.kanban_do"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "746369333960-jv73r7m0e9s3cjfemi6n2rlpcbg0pm2n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2acu_Mjyq7HRL_hPIWwuWiakdKwlapO8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
