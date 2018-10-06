@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Kanban-Do</string>
+    <string name="click_to_edit">Clique para editar</string>
+    <string name="title_card">Título</string>
+    <string name="description_card">Descrição</string>
 </resources>
