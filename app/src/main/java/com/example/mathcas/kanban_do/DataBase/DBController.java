@@ -101,4 +101,10 @@ public class DBController {
         db.close();
     }
 
+    public void deletaRegistro(int id){
+        String where = CreateDB.ID_CARDS + "=" + id;
+        db = banco.getReadableDatabase();
+        db.delete(CreateDB.TABELA_CARDS,where,null);
+        db.close();
+    }
 }

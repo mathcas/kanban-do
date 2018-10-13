@@ -25,6 +25,8 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:text="TO DO"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/floatingActionButton1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/floatingActionButton1" />
@@ -58,6 +60,8 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:text="DOING"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/floatingActionButton2"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
                 app:layout_constraintTop_toTopOf="@+id/floatingActionButton2" />
@@ -108,6 +112,8 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:text="DONE"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/floatingActionButton3"
                 app:layout_constraintStart_toStartOf="@+id/guideline4"
                 app:layout_constraintTop_toTopOf="@+id/floatingActionButton3" />
