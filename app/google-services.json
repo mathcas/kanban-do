@@ -36,6 +36,50 @@
           "status": 2
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:746369333960:android:c503054691026a65",
+        "android_client_info": {
+          "package_name": "com.kanbandos.mathcas.kanban_do"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "746369333960-uvog1ccpstf86nh2uhjjtuq6kgt5hosh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kanbandos.mathcas.kanban_do",
+            "certificate_hash": "447cea388828bc632f9e1b029b752494656d207e"
+          }
+        },
+        {
+          "client_id": "746369333960-jv73r7m0e9s3cjfemi6n2rlpcbg0pm2n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2acu_Mjyq7HRL_hPIWwuWiakdKwlapO8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "746369333960-jv73r7m0e9s3cjfemi6n2rlpcbg0pm2n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
     }
   ],
   "configuration_version": "1"

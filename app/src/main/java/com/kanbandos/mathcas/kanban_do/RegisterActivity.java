@@ -72,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         String confirmPassword = confirmPasswordEditText.getText().toString();
-        if (password.equals(confirmPassword)) {
+        if (password.equals(confirmPassword) || email.isEmpty() || password.isEmpty()) {
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
@@ -95,7 +95,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     });
         }
         else {
-            Toast.makeText(RegisterActivity.this, "Password is different.",
+            Toast.makeText(RegisterActivity.this, "Email or Password is different.",
                     Toast.LENGTH_SHORT).show();
             updateUI(null);
 
