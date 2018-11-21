@@ -1,4 +1,4 @@
-package com.example.mathcas.kanban_do;
+package com.kanbandos.mathcas.kanban_do;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.mathcas.kanban_do", appContext.getPackageName());
+        assertEquals("com.kanbandos.mathcas.kanban_do", appContext.getPackageName());
     }
 }

@@ -4,5 +4,5 @@
     <string name="title_card">Title</string>
     <string name="description_card">Description</string>
     <string name="move_to_colunm">Move to column:</string>
-    <string name="alarm">Alarm</string>
+    <string name="alarm">Enable notification in one day to this card?</string>
 </resources>

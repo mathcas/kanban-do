@@ -1,4 +1,4 @@
-package com.example.mathcas.kanban_do;
+package com.kanbandos.mathcas.kanban_do;
 
 import android.app.AlarmManager;
 import android.app.Dialog;
@@ -7,15 +7,11 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.CursorIndexOutOfBoundsException;
+import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -24,16 +20,20 @@ import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.mathcas.kanban_do.DataBase.CreateDB;
-import com.example.mathcas.kanban_do.DataBase.DBController;
+import com.kanbandos.mathcas.kanban_do.DataBase.CreateDB;
+import com.kanbandos.mathcas.kanban_do.DataBase.DBController;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
+    private static final int ONE_DAY_NOTIFICATION = 86400000;
     private FloatingActionButton floatingActionButton1;
     private FloatingActionButton floatingActionButton2;
     private FloatingActionButton floatingActionButton3;
@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private GridLayout gridCard;
     private SimpleCursorAdapter adaptador;
     private AlarmManager alarmManager;
+    private InterstitialAd mInterstitialAd;
 
 
     @Override
@@ -68,7 +69,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         carregaCards(1);
         carregaCards(2);
         carregaCards(3);
+        MobileAds.initialize(this, "ca-app-pub-9888849565410527~8096004994");
 
+        mInterstitialAd = new InterstitialAd(this);
+        // versao de teste
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        // versao de versão release
+        //mInterstitialAd.setAdUnitId("ca-app-pub-9888849565410527/6980990605");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                // Load the next interstitial.
+                mInterstitialAd.loadAd(new AdRequest.Builder().build());
+            }
+
+        });
         this.setListener();
     }
 
@@ -106,6 +123,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.floatingActionButton1:
                 cont = 1;
                 createDialogCustom();
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                }
                 break;
             case R.id.floatingActionButton2:
                 cont = 2;
@@ -192,7 +212,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String tituloString = titulo.getText().toString();
         String descriptionString = description.getText().toString();
         CheckBox checkBox = dialog.findViewById(R.id.alarm);
-        if (checkBox.isChecked()) scheduleNotification(getNotification(tituloString), 1000);
+        if (checkBox.isChecked()) scheduleNotification(getNotification(tituloString), ONE_DAY_NOTIFICATION);
         int column = coluna;
         column = verifyRadioButtonIsChecked(column, dialog);
 

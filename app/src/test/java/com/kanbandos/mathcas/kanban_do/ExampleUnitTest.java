@@ -1,4 +1,4 @@
-package com.example.mathcas.kanban_do;
+package com.kanbandos.mathcas.kanban_do;
 
 import org.junit.Test;
 

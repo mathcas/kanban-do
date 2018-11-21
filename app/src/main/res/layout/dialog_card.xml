@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="200dp"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_width="300dp"
+    android:gravity="center"
+    android:layout_height="250dp"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/default_8dp">
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Card"
+        android:textSize="32dp"
+        android:layout_gravity="center"/>
 
     <EditText
         android:id="@+id/titulo_card"
@@ -21,10 +30,10 @@
 
     <Button
         android:id="@+id/confirm_card"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_8dp"
-        android:text="OK"
+        android:text="Confirm"
         android:gravity="center"/>
 
 </LinearLayout>

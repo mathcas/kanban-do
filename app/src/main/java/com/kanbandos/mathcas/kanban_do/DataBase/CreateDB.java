@@ -1,4 +1,4 @@
-package com.example.mathcas.kanban_do.DataBase;
+package com.kanbandos.mathcas.kanban_do.DataBase;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

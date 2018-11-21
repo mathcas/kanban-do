@@ -1,4 +1,4 @@
-package com.example.mathcas.kanban_do;
+package com.kanbandos.mathcas.kanban_do;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +19,6 @@ public class SplashActivity extends AppCompatActivity {
                 Intent intent = new Intent(SplashActivity.this, RegisterActivity.class);
                 SplashActivity.this.startActivity(intent);
             }
-        }, 1500);
+        }, 1000);
     }
 }
