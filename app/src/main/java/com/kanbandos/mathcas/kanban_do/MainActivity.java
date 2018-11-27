@@ -7,6 +7,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.design.widget.FloatingActionButton;
@@ -24,12 +25,15 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.kanbandos.mathcas.kanban_do.DataBase.CreateDB;
 import com.kanbandos.mathcas.kanban_do.DataBase.DBController;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
@@ -49,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private SimpleCursorAdapter adaptador;
     private AlarmManager alarmManager;
     private InterstitialAd mInterstitialAd;
+    private Button sentEmailTable1;
+    private Button logout;
 
 
     @Override
@@ -65,7 +71,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lista1 = (ListView)findViewById(R.id.listview1);
         lista2 = (ListView)findViewById(R.id.listview2);
         lista3 = (ListView)findViewById(R.id.listview3);
-
+        sentEmailTable1 = findViewById(R.id.email_table_1);
+        logout = findViewById(R.id.logout);
         carregaCards(1);
         carregaCards(2);
         carregaCards(3);
@@ -96,6 +103,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         floatingActionButton1.setOnClickListener(this);
         floatingActionButton2.setOnClickListener(this);
         floatingActionButton3.setOnClickListener(this);
+        sentEmailTable1.setOnClickListener(this);
+        logout.setOnClickListener(this);
     }
 
     @Override
@@ -142,7 +151,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 }
                 break;
+            case R.id.email_table_1:
+                sentEmail();
+                break;
+            case R.id.logout:
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                startActivity(intent);
+                finish();
         }
+    }
+
+    private void sentEmail() {
+        String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        String subject = "All Tasks";
+        DBController crud = new DBController(getBaseContext());
+        Cursor cursor = crud.carregaTodosDados();
+        StringBuilder body = new StringBuilder();
+
+
+        ArrayList<String> columnArray2 = new ArrayList<String>();
+        ArrayList<String> columnArray3 = new ArrayList<String>();
+        for(int i = 0 ; i < cursor.getCount(); i++) {
+            cursor.moveToPosition(i);
+            columnArray2.add(cursor.getString(1));
+            columnArray3.add(cursor.getString(2));
+        }
+
+        for (int i = 0; i < columnArray2.size(); i++) {
+            body.append("Title: ");
+            body.append(columnArray2.get(i));
+            body.append("\n");
+            body.append("Description: ");
+            body.append(columnArray3.get(i));
+            body.append("\n");
+            body.append("\n");
+        }
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + email));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        emailIntent.putExtra(Intent.EXTRA_TEXT, body.toString());
+
+        startActivity(Intent.createChooser(emailIntent, "Enviar E-mail"));
     }
 
     private void createDialogWithData(final String id) {
@@ -282,5 +331,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         builder.setSmallIcon(R.drawable.fragment_contraint_radius);
         return builder.build();
     }
-
 }

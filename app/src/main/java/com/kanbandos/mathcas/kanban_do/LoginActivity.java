@@ -23,11 +23,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+
+        email = findViewById(R.id.email_textView);
+        password = findViewById(R.id.password_textView);
         login = (Button) findViewById(R.id.button_login);
         register = findViewById(R.id.register);
         login.setOnClickListener(this);
         register.setOnClickListener(this);
         mAuth = FirebaseAuth.getInstance();
+
     }
 
     @Override
@@ -35,6 +39,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         switch (v.getId()) {
             case R.id.button_login:
+                onLogin();
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 LoginActivity.this.startActivity(intent);
                 break;
@@ -61,8 +66,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void updateUI(FirebaseUser user) {
         if (user != null) {
-            email.setText(user.getEmail());
-            password.setVisibility(View.GONE);
+            //email.setText(user.getEmail().toString());
+            //password.setVisibility(View.GONE);
 
             findViewById(R.id.register).setVisibility(View.GONE);
             findViewById(R.id.sign_out).setVisibility(View.VISIBLE);
@@ -71,5 +76,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             findViewById(R.id.register).setVisibility(View.VISIBLE);
             findViewById(R.id.sign_out).setVisibility(View.GONE);
         }
+    }
+
+    private void onLogin() {
+        String email = this.email.getText().toString();
+        String password = this.password.getText().toString();
+
+        mAuth.signInWithEmailAndPassword(email, password);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
     }
 }

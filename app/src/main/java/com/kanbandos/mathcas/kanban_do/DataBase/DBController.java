@@ -107,4 +107,17 @@ public class DBController {
         db.delete(CreateDB.TABELA_CARDS,where,null);
         db.close();
     }
+
+    public Cursor carregaTodosDados(){
+        Cursor cursor;
+        String[] campos =  {banco.ID_CARDS, banco.TITULO_CARDS, banco.DESCRIPTION};
+        db = banco.getReadableDatabase();
+        cursor = db.query(banco.TABELA_CARDS, campos, null, null, null, null, null, null);
+
+        if(cursor!=null){
+            cursor.moveToFirst();
+        }
+        db.close();
+        return cursor;
+    }
 }

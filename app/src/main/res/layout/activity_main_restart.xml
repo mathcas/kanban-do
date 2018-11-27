@@ -86,7 +86,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="13dp"
             android:background="@drawable/linear_table_1"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -99,11 +99,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/linear_table_2"
-                android:paddingTop="32dp"
-                android:paddingLeft="@dimen/default_8dp"
-                android:paddingRight="@dimen/default_8dp"
                 android:paddingStart="40dp"
-                android:paddingEnd="40dp"></ListView>
+                android:paddingLeft="@dimen/default_8dp"
+                android:paddingTop="32dp"
+                android:paddingEnd="40dp"
+                android:paddingRight="@dimen/default_8dp"></ListView>
 
 
         </LinearLayout>
@@ -202,6 +202,28 @@
 
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/email_table_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Sent Tasks to email"
+            app:layout_constraintBottom_toTopOf="@+id/linear1"
+            app:layout_constraintEnd_toStartOf="@+id/floatingActionButton1"
+            app:layout_constraintStart_toEndOf="@+id/text_view1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="logout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 
